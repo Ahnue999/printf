@@ -14,12 +14,11 @@ int _printf(const char *format, ...)
 	char *buf;
 	int (*func)(va_list, char *, unsigned int);
 
-	buf = malloc(sizeof(char) * 1024);
+	buf = malloc(sizeof(char) * BUFSIZE);
 	if (buf == NULL || format == NULL)
 		return(-1);
 
 	va_start(list, format);
-
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
@@ -43,14 +42,7 @@ int _printf(const char *format, ...)
 				}
 			}
 			i++;
-			/*else if (*format == 'c')
-			{
-				char c = va_arg(list, int);
-
-				write(1, &c, 1);
-				printed_ch++;
-			}
-			else if (*format == 's')
+			/*else if (*format == 's')
 			{
 				char *str = va_arg(list, char *);
 

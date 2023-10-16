@@ -14,6 +14,8 @@ int (*get_func(const char *format, int location))(va_list, char *, unsigned int)
 	int i;
 	funcs_t funcs_arr[] = {
 		{"c", print_char},
+		{"s", print_str},
+		{"d", print_dec},
 		{NULL, NULL}
 	};
 

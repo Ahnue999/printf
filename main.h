@@ -19,5 +19,7 @@ int input_buf(char *, char, unsigned int);
 int print_buf(char *, int pos);
 int (*get_func(const char *, int))(va_list, char *, unsigned int);
 int print_char(va_list, char *, unsigned int);
+int print_str(va_list, char *, unsigned int);
+int print_dec(va_list, char *, unsigned int);
 
 #endif
