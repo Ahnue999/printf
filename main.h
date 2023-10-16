@@ -21,5 +21,7 @@ int (*get_func(const char *, int))(va_list, char *, unsigned int);
 int print_char(va_list, char *, unsigned int);
 int print_str(va_list, char *, unsigned int);
 int print_dec(va_list, char *, unsigned int);
+int print_bin(va_list, char *, unsigned int);
+int get_bin(int n);
 
 #endif

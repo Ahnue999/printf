@@ -37,7 +37,7 @@ int print_dec(va_list argument, char *buf, unsigned int pos)
 	for (; count > 0; count /= 10)
 	{
 		tmp = ((m / count) % 10);
-		input_buf(buf, tmp, pos), pos++;
+		input_buf(buf, ('0' + tmp), pos), pos++;
 		length++;
 	}
 
