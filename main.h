@@ -22,6 +22,7 @@ int print_char(va_list, char *, unsigned int);
 int print_str(va_list, char *, unsigned int);
 int print_dec(va_list, char *, unsigned int);
 int print_bin(va_list, char *, unsigned int);
+int print_ui(va_list, char *, unsigned int);
 int get_bin(int n);
 
 #endif

@@ -17,7 +17,7 @@ int print_str(va_list list, char *buf, unsigned int pos)
 	i = 0;
 	while (s[i])
 	{
-		input_buf(buf, s[i], pos);
+		pos = input_buf(buf, s[i], pos);
 		i++;
 	}
 

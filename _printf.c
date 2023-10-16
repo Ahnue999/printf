@@ -42,17 +42,6 @@ int _printf(const char *format, ...)
 				}
 			}
 			i++;
-			/*else if (*format == 's')
-			{
-				char *str = va_arg(list, char *);
-
-				str_len = 0;
-
-				while (str[str_len] != '\0')
-					str_len++;
-				write(1, str, str_len);
-				printed_ch += str_len;
-			}*/
 		}
 		else
 		{
@@ -60,6 +49,8 @@ int _printf(const char *format, ...)
 			printed_ch++;
 		}
 	}
+	/*for (pos = printed_ch; pos > BUFSIZE; pos -= BUFSIZE)
+		;*/
 
 	print_buf(buf, pos);
 	free(buf);

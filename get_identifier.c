@@ -16,7 +16,9 @@ int (*get_func(const char *format, int location))(va_list, char *, unsigned int)
 		{"c", print_char},
 		{"s", print_str},
 		{"d", print_dec},
+		{"i", print_dec},
 		{"b", print_bin},
+		{"u", print_ui},
 		{NULL, NULL}
 	};
 

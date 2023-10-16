@@ -4,7 +4,7 @@
  * print_ui - concatenate an unsigned integer
  * to the buffer.
  *
- * @argument: the decimal.
+ * @argument: the unsigned integer.
  * @buf: the buffer.
  * @pos: the positiong to concatenate to.
  *
