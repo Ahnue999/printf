@@ -11,7 +11,11 @@
 int _printf(const char *format, ...)
 {
 	int printed_ch = 0, str_len;
+	int pos = 0;
 	va_list list;
+	char *buf;
+
+	buf = malloc(sizeof(char) * 1024);
 
 	if (format == NULL)
 		return (-1);
@@ -22,12 +26,12 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			write(1, format, 1);
+			pos = input_buf(buf, *format, pos);
 			printed_ch++;
 		}
 		else
 		{
-			*format++;
+			format++;
 			if (*format == '\0')
 				break;
 			else if (*format == '%')
@@ -57,6 +61,8 @@ int _printf(const char *format, ...)
 		format++;
 	}
 
+	print_buf(buf, pos);
+	free(buf);
 	va_end(list);
 
 	return (printed_ch);
