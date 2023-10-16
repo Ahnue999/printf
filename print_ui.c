@@ -1,45 +1,36 @@
 #include "main.h"
 
 /**
- * print_ui - concatenate an unsigned integer
- * to the buffer.
+ * print_ui- Prints an unsigned integer
  *
- * @argument: the unsigned integer.
- * @buf: the buffer.
- * @pos: the positiong to concatenate to.
- *
- * Return: The length of the decimal added.
+ * @list: arguments
+ * @buffer: Buffer array
+ * @flags:  active flags
+ * @width: field width
+ * @precision: precision specifier
+ * @size: size specifier
  */
-int print_ui(va_list argument, char *buf, unsigned int pos)
+
+int print_ui(va_list list, char buffer[],
+	int flags, int width, int precision, int size)
 {
-	unsigned int n, tmp, length = 0;
-	unsigned int count, d, m;
+	int i = BUFF_SIZE - 2;
+	unsigned long int num = va_arg(list, unsigned long int);
 
-	n = va_arg(argument, int);
+	num = convert_size_ui(num, size);
 
-	if (n < 0)
+	if (num == 0)
+		buffer[i--] = '0';
+
+	buffer[BUFF_SIZE - 1] = '\0';
+
+	while (num > 0)
 	{
-		input_buf(buf, '-', pos), pos++;
-		length++;
-		m = n * -1;
-	}
-	else
-		m = n;
-
-	d = m;
-	count = 1;
-	while (d > 9)
-	{
-		d /= 10;
-		count *= 10;
+		buffer[i--] = (num % 10) + '0';
+		num /= 10;
 	}
 
-	for (; count > 0; count /= 10)
-	{
-		tmp = ((m / count) % 10);
-		input_buf(buf, ('0' + tmp), pos), pos++;
-		length++;
-	}
+	i++;
 
-	return (length);
+	return (write_ui(0, i, buffer, flags, width, precision, size));
 }

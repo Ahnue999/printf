@@ -1,5 +1,8 @@
 #include "main.h"
 
+void buffer_output(char buffer[], int *buff_index);
+
+
 /**
  * _printf - a function that prints output on the screen
  *
@@ -7,54 +10,64 @@
  *
  * Return: the number of characters printed.
  */
+
 int _printf(const char *format, ...)
 {
-	int i, printed_ch = 0, pos = 0, str_len;
+	char buffer[BUFF_SIZE];
+	int i, output = 0, printed_ch = 0;
+	int flags, width, precision, size, buff_index = 0;
 	va_list list;
-	char *buf;
-	int (*func)(va_list, char *, unsigned int);
 
-	buf = malloc(sizeof(char) * BUFSIZE);
-	if (buf == NULL || format == NULL)
-		return(-1);
+	if (format == NULL)
+		return (-1);
 
 	va_start(list, format);
-	for (i = 0; format[i]; i++)
+
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
-		if (format[i] == '%')
+		if (format[i] != '%')
 		{
-			if (format[i + 1] == '\0')
-				break;
-			else if (format[i + 1] == '%')
-			{
-				pos = input_buf(buf, format[i + 1], pos);
-				printed_ch++;
-			}
-			else
-			{
-				func = get_func(format, i + 1);
-				if (func == NULL)
-					return (-1);
-				else
-				{
-					pos += func(list, buf, pos);
-					printed_ch++;
-				}
-			}
-			i++;
+			buffer[buff_index++] = format[i];
+			if (buff_index == BUFF_SIZE)
+				buffer_output(buffer, &buff_index);
+
+			printed_ch++;
 		}
 		else
 		{
-			pos = input_buf(buf, format[i], pos);
-			printed_ch++;
+			buffer_output(buffer, &buff_index);
+			flags = get_flags(format, &i);
+			width = get_width(format, &i, list);
+			precision = get_precision(format, &i, list);
+			size = get_size(format, &i);
+			++i;
+			output = print_output(format, &i, list, buffer,
+				flags, width, precision, size);
+			if (output == -1)
+				return (-1);
+			printed_ch += output;
 		}
 	}
-	/*for (pos = printed_ch; pos > BUFSIZE; pos -= BUFSIZE)
-		;*/
 
-	print_buf(buf, pos);
-	free(buf);
+	buffer_output(buffer, &buff_index);
+
 	va_end(list);
 
 	return (printed_ch);
+}
+
+
+/**
+ * buffer_output - prints the output of the buffer to the screen
+ *
+ * @buffer: Array of chars of the buffer
+ * @buff_index: buffer index
+ */
+
+void buffer_output(char buffer[], int *buff_index)
+{
+	if (*buff_index > 0)
+		write(1, &buffer[0], *buff_index);
+
+	*buff_index = 0;
 }

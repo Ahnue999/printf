@@ -1,36 +1,46 @@
 #include "main.h"
 
 /**
- * print_bin - concatenates a binary to the buffer.
- *
- * @argument: the integer to turn binary.
- * @buf: the buffer.
- * @pos: the position to add on.
- *
- * Return: the length of the bin (8).
+ * print_binary - Prints binary
+ * @list: arguments
+ * @buffer: Buffer array
+ * @flags:  active flags
+ * @width: fieldwidth.
+ * @precision: precision specifier
+ * @size: size specifier
  */
-int print_bin(va_list argument, char *buf, unsigned int pos)
+
+int print_binary(va_list list, char buffer[],
+	int flags, int width, int precision, int size)
 {
-	int i = 8, n;
-	int bin[8];
+	unsigned int n, m, i, sum;
+	unsigned int a[32];
+	int count;
 
-	n = va_arg(argument, int);
+	UNUSED(buffer);
+	UNUSED(flags);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(size);
 
-	if (n > 0)
+	n = va_arg(list, unsigned int);
+	m = 2147483648; /* (2 ^ 31) */
+	a[0] = n / m;
+	for (i = 1; i < 32; i++)
 	{
-		for (i = 7; i >= 0; i--, n /= 2)
+		m /= 2;
+		a[i] = (n / m) % 2;
+	}
+	for (i = 0, sum = 0, count = 0; i < 32; i++)
+	{
+		sum += a[i];
+		if (sum || i == 31)
 		{
-			if (n % 2 == 0)
-				bin[i] = 0;
-			else
-				bin[i] = 1;
+			char z = '0' + a[i];
+
+			write(1, &z, 1);
+			count++;
 		}
 	}
-
-	for (i = 0; i < 8; i++, pos++)
-	{
-		input_buf(buf, ('0' + bin[i]), pos);
-	}
-
-	return (8);
+	return (count);
 }

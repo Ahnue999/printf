@@ -1,25 +1,57 @@
 #include "main.h"
 
-/* print_str - concatenates the provided string
- * to the buffer.
- * 
- * @argument: contains the string to add.
- * @buf: the buffer.
- * @pos: the position to concatenate to.
+/**
+ * print_string - Prints a string
+ *
+ * @list: arguments
+ * @buffer: Buffer array 
+ * @flags:  active flags
+ * @width: field width.
+ * @precision: Precision specifier
+ * @size: Size specifier
  */
-int print_str(va_list list, char *buf, unsigned int pos)
+
+int print_string(va_list list, char buffer[],
+	int flags, int width, int precision, int size)
 {
-	char *s;
-	int i;
+	int length = 0, i;
+	char *str = va_arg(list, char *);
 
-	s = va_arg(list, char *);
-
-	i = 0;
-	while (s[i])
+	UNUSED(buffer);
+	UNUSED(flags);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(size);
+	if (str == NULL)
 	{
-		pos = input_buf(buf, s[i], pos);
-		i++;
+		str = "(null)";
+		if (precision >= 6)
+			str = "      ";
 	}
 
-	return (i);
+	while (str[length] != '\0')
+		length++;
+
+	if (precision >= 0 && precision < length)
+		length = precision;
+
+	if (width > length)
+	{
+		if (flags & F_MINUS)
+		{
+			write(1, &str[0], length);
+			for (i = width - length; i > 0; i--)
+				write(1, " ", 1);
+			return (width);
+		}
+		else
+		{
+			for (i = width - length; i > 0; i--)
+				write(1, " ", 1);
+			write(1, &str[0], length);
+			return (width);
+		}
+	}
+
+	return (write(1, str, length));
 }
