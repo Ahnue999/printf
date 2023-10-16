@@ -7,59 +7,50 @@
  *
  * Return: the number of characters printed.
  */
-
 int _printf(const char *format, ...)
 {
-	int printed_ch = 0, str_len;
-	int pos = 0;
+	int i, printed_ch = 0, pos = 0, str_len;
 	va_list list;
 	char *buf;
+	int (*func)(va_list, char *, unsigned int);
 
-	buf = malloc(sizeof(char) * 1024);
-
-	if (format == NULL)
-		return (-1);
+	buf = malloc(sizeof(char) * BUFSIZE);
+	if (buf == NULL || format == NULL)
+		return(-1);
 
 	va_start(list, format);
-
-	while (*format)
+	for (i = 0; format[i]; i++)
 	{
-		if (*format != '%')
+		if (format[i] == '%')
 		{
-			pos = input_buf(buf, *format, pos);
-			printed_ch++;
+			if (format[i + 1] == '\0')
+				break;
+			else if (format[i + 1] == '%')
+			{
+				pos = input_buf(buf, format[i + 1], pos);
+				printed_ch++;
+			}
+			else
+			{
+				func = get_func(format, i + 1);
+				if (func == NULL)
+					return (-1);
+				else
+				{
+					pos += func(list, buf, pos);
+					printed_ch++;
+				}
+			}
+			i++;
 		}
 		else
 		{
-			format++;
-			if (*format == '\0')
-				break;
-			else if (*format == '%')
-			{
-				write(1, format, 1);
-				printed_ch++;
-			}
-			else if (*format == 'c')
-			{
-				char c = va_arg(list, int);
-
-				write(1, &c, 1);
-				printed_ch++;
-			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(list, char *);
-
-				str_len = 0;
-
-				while (str[str_len] != '\0')
-					str_len++;
-				write(1, str, str_len);
-				printed_ch += str_len;
-			}
+			pos = input_buf(buf, format[i], pos);
+			printed_ch++;
 		}
-		format++;
 	}
+	/*for (pos = printed_ch; pos > BUFSIZE; pos -= BUFSIZE)
+		;*/
 
 	print_buf(buf, pos);
 	free(buf);
