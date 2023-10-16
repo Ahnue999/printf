@@ -1,33 +1,64 @@
 #include "main.h"
 
 /**
+ * _printf - a function that prints output on the screen
  *
+ * @format: format string
  *
- *
- *
- * Return: the number of characters printed. 
+ * Return: the number of characters printed.
  */
+
 int _printf(const char *format, ...)
 {
-	int i, pos = 0;
-	char *buf;
+	int printed_ch = 0;
+	va_arg list;
 
-	buf = malloc(sizeof(char) * BUFSIZE);
-	if (buf == NULL)
+	if (*format == NULL)
 		return (-1);
 
-	i = 0;
-	while (format[i])
+	va_start(list, format);
+
+	while (*format)
 	{
-		/*if (format[i] == %)
-		 * {
-		 * }
-		 * else
-		 * */
-			pos = input_buf(buf, format[i], pos);
-			i++;
+		if (*format != '%')
+		{
+			write(1, format, 1);
+			printed_ch++;
+		}
+		else
+		{
+			format++
+			if (*format == '\0')
+				break;
+			else if (*format == '%')
+			{
+				write(1, format, 1);
+				printed_ch++;
+			}
+			else if (*format == 'c')
+			{
+				char c = va_arg(list, int);
+
+				write(1, &c, 1);
+				printed_ch++;
+			}
+			else if (*format == 's')
+			{
+				char *str = va_arg(list, *char);
+
+				str_len = 0;
+
+				while (str[str_len] != '\0')
+					str_len++;
+				write(1, str, str_len);
+				printed_ch += str_len;
+			}
+		}
+
+		format++;
 	}
-	print_buf(buf, pos);
-	free(buf);
-	return (pos);
+
+	va_end(list);
+
+	return (printed_ch);
 }
