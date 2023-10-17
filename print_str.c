@@ -12,16 +12,20 @@
 int print_str(va_list list, char *buf, unsigned int pos)
 {
 	char *s;
-	int i;
+	unsigned int i;
+	char *nil = "(null)";
 
 	s = va_arg(list, char *);
 
-	i = 0;
-	while (s[i])
+	if (s == NULL)
 	{
-		pos = input_buf(buf, s[i], pos);
-		i++;
+		for (i = 0; nil[i]; i++)
+			pos = input_buf(buf, nil[i], pos);
+		return (i);
 	}
+
+	for (i = 0; s[i]; i++)
+		pos = input_buf(buf, s[i], pos);
 
 	return (i);
 }

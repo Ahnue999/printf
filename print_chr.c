@@ -9,7 +9,7 @@
  * @pos: the position to concatenate to.
  * Return: 1 (the size of a char).
  */
-int print_char(va_list list, char *buf, unsigned int pos)
+int print_chr(va_list list, char *buf, unsigned int pos)
 {
 	char c;
 

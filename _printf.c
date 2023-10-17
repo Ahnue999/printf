@@ -9,42 +9,54 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, printed_ch = 0, pos = 0;
+	unsigned int i = 0, ch = 0, pos = 0;
 	va_list list;
 	char *buf;
 	int (*func)(va_list, char *, unsigned int);
 
-	buf = malloc(sizeof(char) * BUFSIZE);
-	if (buf == NULL || format == NULL)
-		return (-1);
-
 	va_start(list, format);
-	for (i = 0; format[i]; i++)
+
+	buf = malloc(sizeof(char) * BUFSIZE);
+	if (!format || (format[i] == '%' && !format[i + 1]) || !buf)
+		return (-1);
+	if (!format[0])
+		return (0);
+
+
+	for (i = 0; format && format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == '\0')
-				break;
-			else if (format[i + 1] == '%')
 			{
-				pos = input_buf(buf, format[i + 1], pos), printed_ch++;
+				print_buf(buf, pos), free(buf), va_end(list);
+				return (-1);
 			}
 			else
 			{
 				func = get_func(format, i + 1);
 				if (func == NULL)
-					exit(-1);
+				{
+					if (format[i + 1] == ' ' && !format[i + 2])
+						return (-1);
+					input_buf(buf, format[i], pos), ch++, i--;
+				}
 				else
-					pos += func(list, buf, pos), printed_ch++;
+				{
+					ch += func(list, buf, pos), ch++;
+					i += ev_print_func(format, i + 1);
+				}
 			} i++;
 		}
 		else
-			pos = input_buf(buf, format[i], pos), printed_ch++;
+			input_buf(buf, format[i], pos), ch++;
+		for (pos = ch; pos > BUFSIZE; pos -= BUFSIZE)
+			;
 	}
 
 	print_buf(buf, pos);
 	free(buf);
 	va_end(list);
 
-	return (printed_ch);
+	return (ch);
 }
