@@ -6,7 +6,8 @@
   *
   * @argument: the string.
   * @buf: the buffer.
-  * @pos: the position to add on.
+  * @pos: the position to add on
+  * 
   * Return: the length of the string.
   */
 int print_htr(va_list argument, char *buf, unsigned int pos)

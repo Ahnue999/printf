@@ -4,8 +4,8 @@
  * get_func - gets the suitable function for
  * the indentifier.
  *
- * @format: the original format.
- * @loc: the location of the identifier.
+ * @format: original format.
+ * @loc: location of the identifier.
  *
  * Return: a pointer to the suitable function.
  */

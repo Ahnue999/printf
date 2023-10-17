@@ -7,6 +7,7 @@
  * @list: contains the char to add.
  * @buf: the buffer.
  * @pos: the position to concatenate to.
+ *
  * Return: 1 (the size of a char).
  */
 int print_chr(va_list list, char *buf, unsigned int pos)

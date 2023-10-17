@@ -4,9 +4,9 @@
  * print_ui - concatenate an unsigned integer
  * to the buffer.
  *
- * @argument: the unsigned integer.
- * @buf: the buffer.
- * @pos: the positiong to concatenate to.
+ * @argument: unsigned integer.
+ * @buf: buffer.
+ * @pos: position to concatenate to.
  *
  * Return: The length of the decimal added.
  */
@@ -41,7 +41,7 @@ int print_ui(va_list argument, char *buf, unsigned int pos)
  *
  * @argument: the unsigned integer.
  * @buf: the buffer.
- * @pos: the positiong to concatenate to.
+ * @pos: the position to concatenate to.
  *
  * Return: The length of the decimal added.
  */
@@ -70,11 +70,11 @@ int print_sui(va_list argument, char *buf, unsigned int pos)
 
 /**
  * print_lui - concatenate an unsigned integer
- * to the buffer.
+ * to the buffer
  *
  * @argument: the unsigned integer.
  * @buf: the buffer.
- * @pos: the positiong to concatenate to.
+ * @pos: the position to concatenate to.
  *
  * Return: The length of the decimal added.
  */

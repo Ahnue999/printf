@@ -17,6 +17,7 @@
   *
   * Description: an identifiers structure
   */
+
 typedef struct funcs
 {
 	char *ident;

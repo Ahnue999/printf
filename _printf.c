@@ -7,6 +7,7 @@
  *
  * Return: the number of characters printed.
  */
+
 int _printf(const char *format, ...)
 {
 	unsigned int i = 0, ch = 0, pos = 0;

@@ -5,10 +5,11 @@
  * to the buffer.
  *
  * @list: contains the string to add.
- * @buf: the buffer.
- * @pos: the position to concatenate to.
+ * @buf: buffer.
+ * @pos: position to concatenate to.
  * Return: the length of the printed string.
  */
+
 int print_str(va_list list, char *buf, unsigned int pos)
 {
 	char *s;
@@ -35,10 +36,11 @@ int print_str(va_list list, char *buf, unsigned int pos)
  * to the buffer in reverse.
  *
  * @list: contains the string to add.
- * @buf: the buffer.
- * @pos: the position to concatenate to.
+ * @buf: buffer.
+ * @pos: position to concatenate to.
  * Return: the length of the printed string.
  */
+
 int print_rev(va_list list, char *buf, unsigned int pos)
 {
 	char *s;
