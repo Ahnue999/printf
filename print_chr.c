@@ -18,3 +18,17 @@ int print_chr(va_list list, char *buf, unsigned int pos)
 
 	return (1);
 }
+
+/**
+ * print_per - concatenate % to the buffer
+ * @a: input char
+ * @buf: buffer pointer
+ * @i: index for buffer pointer
+ * Return: On success 1.
+ */
+int print_per(va_list a __attribute__((unused)), char *buf, unsigned int i)
+{
+	input_buf(buf, '%', i);
+
+	return (1);
+}
