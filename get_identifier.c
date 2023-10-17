@@ -13,13 +13,11 @@ int (*get_func(const char *format, int loc))(va_list, char *, unsigned int)
 {
 	int i;
 	funcs_t funcs_arr[] = {
-		{"c", print_chr},
-		{"s", print_str},
-		{"d", print_dec},
-		{"i", print_dec},
-		{"b", print_bin},
-		{"o", print_oct},
-		{"u", print_ui},
+		{"c", print_chr}, {"s", print_str},
+		{"d", print_dec}, {"i", print_dec},
+		{"b", print_bin}, {"o", print_oct},
+		{"x", print_hex}, {"u", print_ui},
+		{"X", print_HEX},
 		{NULL, NULL}
 	};
 

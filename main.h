@@ -32,9 +32,12 @@ int print_str(va_list, char *, unsigned int);
 int print_dec(va_list, char *, unsigned int);
 int print_bin(va_list, char *, unsigned int);
 int print_oct(va_list, char *, unsigned int);
+int print_hex(va_list, char *, unsigned int);
+int print_HEX(va_list, char *, unsigned int);
 int print_ui(va_list, char *, unsigned int);
 char *fill_bin(char *, int, int, int);
 char *fill_oct(char *oct, char *bin);
+char *fill_hex(char *hex, char *bin, int, int);
 int ev_print_func(const char *, int);
 
 #endif

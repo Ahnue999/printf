@@ -11,7 +11,7 @@ int ev_print_func(const char *s, int index)
 	 funcs_t pr[] = {
 		{"c", print_chr}, {"s", print_str}, {"i", print_dec},
 		{"d", print_dec}, {"b", print_bin}, {"u", print_ui},
-		{"o", print_oct},
+		{"o", print_oct}, {"x", print_hex}, {"x", print_hex},
 		{NULL, NULL},
 	};
 	int i = 0, j = 0, first_index;
