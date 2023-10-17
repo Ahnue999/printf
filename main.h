@@ -9,7 +9,7 @@
 #define BUFSIZE 1024
 
 /**
-  * funcs - a collection of identifiers with
+  * funcs - a collection of identifiers with.
   * their respective functions.
   *
   * @ident: an identifier name.
