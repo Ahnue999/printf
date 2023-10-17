@@ -1,11 +1,13 @@
 #include "main.h"
 
-/* print_str - concatenates the provided string
+/**
+ * print_str - concatenates the provided string
  * to the buffer.
- * 
- * @argument: contains the string to add.
+ *
+ * @list: contains the string to add.
  * @buf: the buffer.
  * @pos: the position to concatenate to.
+ * Return: the length of the printed string.
  */
 int print_str(va_list list, char *buf, unsigned int pos)
 {

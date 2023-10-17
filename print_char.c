@@ -1,11 +1,13 @@
 #include "main.h"
 
-/* print_char - concatenates the provided char
+/**
+ * print_char - concatenates the provided char
  * to the buffer.
- * 
- * @argument: contains the char to add.
+ *
+ * @list: contains the char to add.
  * @buf: the buffer.
  * @pos: the position to concatenate to.
+ * Return: 1 (the size of a char).
  */
 int print_char(va_list list, char *buf, unsigned int pos)
 {

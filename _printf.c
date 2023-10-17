@@ -9,14 +9,14 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, printed_ch = 0, pos = 0, str_len;
+	int i, printed_ch = 0, pos = 0;
 	va_list list;
 	char *buf;
 	int (*func)(va_list, char *, unsigned int);
 
 	buf = malloc(sizeof(char) * BUFSIZE);
 	if (buf == NULL || format == NULL)
-		return(-1);
+		return (-1);
 
 	va_start(list, format);
 	for (i = 0; format[i]; i++)
@@ -27,30 +27,20 @@ int _printf(const char *format, ...)
 				break;
 			else if (format[i + 1] == '%')
 			{
-				pos = input_buf(buf, format[i + 1], pos);
-				printed_ch++;
+				pos = input_buf(buf, format[i + 1], pos), printed_ch++;
 			}
 			else
 			{
 				func = get_func(format, i + 1);
 				if (func == NULL)
-					return (-1);
+					exit(-1);
 				else
-				{
-					pos += func(list, buf, pos);
-					printed_ch++;
-				}
-			}
-			i++;
+					pos += func(list, buf, pos), printed_ch++;
+			} i++;
 		}
 		else
-		{
-			pos = input_buf(buf, format[i], pos);
-			printed_ch++;
-		}
+			pos = input_buf(buf, format[i], pos), printed_ch++;
 	}
-	/*for (pos = printed_ch; pos > BUFSIZE; pos -= BUFSIZE)
-		;*/
 
 	print_buf(buf, pos);
 	free(buf);

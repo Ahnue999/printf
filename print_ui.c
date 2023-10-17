@@ -17,14 +17,7 @@ int print_ui(va_list argument, char *buf, unsigned int pos)
 
 	n = va_arg(argument, int);
 
-	if (n < 0)
-	{
-		input_buf(buf, '-', pos), pos++;
-		length++;
-		m = n * -1;
-	}
-	else
-		m = n;
+	m = n;
 
 	d = m;
 	count = 1;

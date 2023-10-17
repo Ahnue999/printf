@@ -1,15 +1,15 @@
 #include "main.h"
 
-/*
+/**
  * get_func - gets the suitable function for
  * the indentifier.
  *
  * @format: the original format.
- * @location: the location of the identifier.
- * 
+ * @loc: the location of the identifier.
+ *
  * Return: a pointer to the suitable function.
  */
-int (*get_func(const char *format, int location))(va_list, char *, unsigned int)
+int (*get_func(const char *format, int loc))(va_list, char *, unsigned int)
 {
 	int i;
 	funcs_t funcs_arr[] = {
@@ -25,7 +25,7 @@ int (*get_func(const char *format, int location))(va_list, char *, unsigned int)
 	i = 0;
 	while (funcs_arr[i].ident)
 	{
-		if (format[location] == funcs_arr[i].ident[0])
+		if (format[loc] == funcs_arr[i].ident[0])
 			break;
 		i++;
 	}
