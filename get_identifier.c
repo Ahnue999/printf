@@ -18,6 +18,7 @@ int (*get_func(const char *format, int loc))(va_list, char *, unsigned int)
 		{"b", print_bin}, {"o", print_oct},
 		{"x", print_hex}, {"u", print_ui},
 		{"X", print_HEX}, {"S", print_htr},
+		{"p", print_add},
 		{NULL, NULL}
 	};
 
