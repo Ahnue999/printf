@@ -4,8 +4,8 @@
  * print_hex - concatenates a hexadecimal to the buffer.
  *
  * @argument: the integer to turn hexadecimal.
- * @buf: the buffer.
- * @pos: the position to add on.
+ * @buf: buffer.
+ * @pos: position to add on.
  *
  * Return: the length of the octal.
  */
