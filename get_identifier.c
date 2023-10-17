@@ -30,7 +30,7 @@ int (*get_func(const char *format, int loc))(va_list, char *, unsigned int)
 		{"+i", print_plint}, {"+d", print_plint},
 		{"+u", print_ui}, {"+o", print_oct},
 		{"+x", print_hex}, {"+X", print_HEX},
-		{"lx", print_shex}, {"lX", print_lHEX}, 
+		{"lx", print_shex}, {"lX", print_lHEX},
 		{"R", print_rot}, {"r", print_rev},
 		{" +i", print_plint}, {" +d", print_plint},
 		{"+ i", print_plint}, {"+ d", print_plint},
