@@ -68,7 +68,7 @@ int print_plint(va_list argument, char *buf, unsigned int pos)
 	else
 	{
 		m = n;
-		pos = input_buf(buf, '-', pos);
+		pos = input_buf(buf, '+', pos);
 	}
 
 	d = m;

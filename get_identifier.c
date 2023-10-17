@@ -11,7 +11,7 @@
  */
 int (*get_func(const char *format, int loc))(va_list, char *, unsigned int)
 {
-	int i;
+	int i = 0, j = 0, first;
 	funcs_t funcs_arr[] = {
 		{"c", print_chr}, {"s", print_str},
 		{"d", print_int}, {"i", print_int},
@@ -19,21 +19,37 @@ int (*get_func(const char *format, int loc))(va_list, char *, unsigned int)
 		{"x", print_hex}, {"u", print_ui},
 		{"X", print_HEX}, {"S", print_htr},
 		{"p", print_add}, {"ho", print_soct},
-		{"lo", print_loct},
 		{"hd", print_sint}, {"hi", print_sint},
 		{"ld", print_lint}, {"li", print_lint},
 		{" d", print_spint}, {" i", print_spint},
-		{"+d", print_plint}, {"+i", print_plint},
-		{"hx", print_shex}, {"lx", print_lhex}, 
+		{"+d", print_plint}, {"hx", print_shex},
+		{"lx", print_lhex}, {" u", print_ui},
+		{" o", print_oct}, {"#i", print_int},
+		{"#d", print_int}, {"lo", print_loct},
+		{" x", print_hex}, {"%", print_per},
+		{"+i", print_plint}, {"+d", print_plint},
+		{"+u", print_ui}, {"+o", print_oct},
+		{"+x", print_hex}, {"+X", print_HEX},
+		{"lx", print_shex}, {"lX", print_lHEX}, 
 		{NULL, NULL}
 	};
 
-	i = 0;
+	first = loc;
 	while (funcs_arr[i].ident)
 	{
-		if (format[loc] == funcs_arr[i].ident[0])
-			break;
-		i++;
+		if (format[loc] == funcs_arr[i].ident[j])
+		{
+			if (funcs_arr[i].ident[j + 1] != '\0')
+				loc++, j++;
+			else
+				break;
+		}
+		else
+		{
+			i++;
+			j = 0;
+			loc = first;
+		}
 	}
 
 	return (funcs_arr[i].func);
