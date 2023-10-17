@@ -34,6 +34,8 @@ int (*get_func(const char *format, int loc))(va_list, char *, unsigned int)
 		{"R", print_rot}, {"r", print_rev},
 		{" +i", print_plint}, {" +d", print_plint},
 		{"+ i", print_plint}, {"+ d", print_plint},
+		{"#o", print_noct}, {"#x", print_nhex},
+		{"#X", print_NHEX}, {"#u", print_ui},
 		{NULL, NULL}
 	};
 

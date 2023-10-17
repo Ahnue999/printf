@@ -42,7 +42,7 @@ int print_str(va_list list, char *buf, unsigned int pos)
 int print_rev(va_list list, char *buf, unsigned int pos)
 {
 	char *s;
-	unsigned int i; 
+	unsigned int i;
 	int j = 0;
 	char *nil = "(null)";
 
