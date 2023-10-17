@@ -59,7 +59,7 @@ int print_rev(va_list list, char *buf, unsigned int pos)
 		;
 	j = i - 1;
 	for (; j >= 0; j--)
-		pos = input_buf(buf, s[i], pos);
+		pos = input_buf(buf, s[j], pos);
 
 	return (i);
 }

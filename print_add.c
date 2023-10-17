@@ -24,7 +24,7 @@ int print_add(va_list argument, char *buf, unsigned int pos)
 			pos = input_buf(buf, nil[i], pos);
 		return (i);
 	}
-	n = (intptr_t)add;
+	n = (unsigned long int)add;
 	is_neg = 0;
 	if (n < 0)
 	{
