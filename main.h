@@ -30,6 +30,8 @@ int (*get_func(const char *, int))(va_list, char *, unsigned int);
 int print_chr(va_list, char *, unsigned int);
 int print_per(va_list, char *, unsigned int);
 int print_str(va_list, char *, unsigned int);
+int print_rev(va_list, char *, unsigned int);
+int print_rot(va_list, char *, unsigned int);
 int print_htr(va_list, char *, unsigned int);
 int print_int(va_list, char *, unsigned int);
 int print_sint(va_list, char *, unsigned int);

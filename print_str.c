@@ -42,7 +42,8 @@ int print_str(va_list list, char *buf, unsigned int pos)
 int print_rev(va_list list, char *buf, unsigned int pos)
 {
 	char *s;
-	unsigned int i, j = 0;
+	unsigned int i; 
+	int j = 0;
 	char *nil = "(null)";
 
 	s = va_arg(list, char *);
@@ -82,7 +83,7 @@ int print_rot(va_list arguments, char *buf, unsigned int pos)
 	if (str == NULL)
 	{
 		for (i = 0; nill[i]; i++)
-			pos = handl_buf(buf, nill[i], pos);
+			pos = input_buf(buf, nill[i], pos);
 		return (6);
 	}
 	for (i = 0; str[i]; i++)
@@ -92,7 +93,7 @@ int print_rot(va_list arguments, char *buf, unsigned int pos)
 			if (str[i] == alf[j])
 			{
 				k = 1;
-				pos = handl_buf(buf, rot[j], pos);
+				pos = input_buf(buf, rot[j], pos);
 				break;
 			}
 		}
