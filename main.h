@@ -29,6 +29,7 @@ int print_buf(char *, unsigned int pos);
 int (*get_func(const char *, int))(va_list, char *, unsigned int);
 int print_chr(va_list, char *, unsigned int);
 int print_str(va_list, char *, unsigned int);
+int print_htr(va_list, char *, unsigned int);
 int print_dec(va_list, char *, unsigned int);
 int print_bin(va_list, char *, unsigned int);
 int print_oct(va_list, char *, unsigned int);

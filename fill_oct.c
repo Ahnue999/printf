@@ -5,9 +5,6 @@
   *
   * @oct: the octal array to fill.
   * @bin: the binary form of the decimal
-  * @n: the input number in decimal.
-  * @is_neg: wheither the dec is neg or not.
-  * @limit: the slots available the array.
   * Return: a pointer to the array.
   */
 char *fill_oct(char *oct, char *bin)
