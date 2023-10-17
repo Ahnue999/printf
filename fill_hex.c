@@ -6,7 +6,8 @@
   * @hex: the hex array to fill.
   * @bin: the binary form of the decimal
   * @isupper: upper or lower
-  * @limit: the slots available the array.
+  * @limit: the slots available the array
+  *
   * Return: a pointer to the array.
   */
 char *fill_hex(char *hex, char *bin, int isupper, int limit)
