@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_char - concatenates the provided char
+ * print_chr - concatenates the provided char
  * to the buffer.
  *
  * @list: contains the char to add.

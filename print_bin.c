@@ -11,26 +11,38 @@
  */
 int print_bin(va_list argument, char *buf, unsigned int pos)
 {
-	int i = 8, n;
-	int bin[8];
+	int n, i, length, first, is_neg = 0;
+	char *bin;
 
 	n = va_arg(argument, int);
 
-	if (n > 0)
+	if (n == 0)
 	{
-		for (i = 7; i >= 0; i--, n /= 2)
+		input_buf(buf, '0', pos);
+		return (1);
+	}
+
+	if (n < 0)
+	{
+		n = (n * -1) - 1;
+		is_neg = 1;
+	}
+
+	bin = malloc(sizeof(char) * (32 + 1));
+	bin = fill_bin(bin, n , is_neg, 32);
+
+	first = 0;
+	for (i = length = 0; bin[i]; i++)
+	{
+		if (first == 0 && bin[i] == '1')
+			first = 1;
+		if (first == 1)
 		{
-			if (n % 2 == 0)
-				bin[i] = 0;
-			else
-				bin[i] = 1;
+			pos = input_buf(buf, bin[i], pos);
+			length++;
 		}
-	}
 
-	for (i = 0; i < 8; i++, pos++)
-	{
-		input_buf(buf, ('0' + bin[i]), pos);
 	}
-
-	return (8);
+	free(bin);
+	return (length);
 }

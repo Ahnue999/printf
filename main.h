@@ -32,7 +32,7 @@ int print_str(va_list, char *, unsigned int);
 int print_dec(va_list, char *, unsigned int);
 int print_bin(va_list, char *, unsigned int);
 int print_ui(va_list, char *, unsigned int);
-int get_bin(int n);
+char *fill_bin(char *, int, int, int);
 int ev_print_func(const char *, int);
 
 #endif

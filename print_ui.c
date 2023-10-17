@@ -16,7 +16,7 @@ int print_ui(va_list argument, char *buf, unsigned int pos)
 	unsigned int count, d;
 
 	n = va_arg(argument, unsigned int);
-	
+
 	d = n;
 	count = 1;
 	while (d > 9)
