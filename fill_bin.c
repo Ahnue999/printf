@@ -6,7 +6,8 @@
   * @bin: the binary array to fill.
   * @n: the input number in decimal.
   * @is_neg: wheither the dec is neg or not.
-  * @limit: the slots available the array.
+  * @limit: the slots available the array
+  *
   * Return: a pointer to the array.
   */
 char *fill_bin(char *bin, int n, int is_neg, int limit)
