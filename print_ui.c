@@ -8,7 +8,8 @@
  * @flags:  active flags
  * @width: field width
  * @precision: precision specifier
- * @size: size specifier
+ * @size: size specifie
+ * Return: unsigned int
  */
 
 int print_ui(va_list list, char buffer[],

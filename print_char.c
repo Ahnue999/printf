@@ -8,6 +8,7 @@
  * @width: field width
  * @precision: precision specifier
  * @size: size specifier
+ * Return: char
  */
 
 int print_char(va_list list, char buffer[],

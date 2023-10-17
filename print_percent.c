@@ -9,6 +9,7 @@
  * @width: feild width.
  * @precision: precision specifier
  * @size: size specifier
+ * Returm: percent sign
  */
 
 int print_percent(va_list list, char buffer[],

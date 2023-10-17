@@ -8,6 +8,7 @@
  * @width: fieldwidth.
  * @precision: precision specifier
  * @size: size specifier
+ * Return: binary
  */
 
 int print_binary(va_list list, char buffer[],

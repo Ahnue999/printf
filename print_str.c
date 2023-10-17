@@ -4,11 +4,12 @@
  * print_string - Prints a string
  *
  * @list: arguments
- * @buffer: Buffer array 
+ * @buffer: Buffer array
  * @flags:  active flags
  * @width: field width.
  * @precision: Precision specifier
  * @size: Size specifier
+ * Return: string
  */
 
 int print_string(va_list list, char buffer[],

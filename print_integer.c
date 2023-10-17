@@ -9,6 +9,7 @@
  * @width: field get width.
  * @precision: precision specifier
  * @size: size specifier
+ * Return: integer
  */
 
 int print_int(va_list list, char buffer[],
