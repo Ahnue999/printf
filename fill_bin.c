@@ -39,6 +39,5 @@ char *fill_bin(char *bin, int n, int is_neg, int limit)
 				bin[i] = '0';
 		}
 	}
-
 	return (bin);
 }
