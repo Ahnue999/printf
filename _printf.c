@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	buf = malloc(sizeof(char) * BUFSIZE);
 	if (!format || (format[i] == '%' && !format[i + 1]) || !buf)
 		return (-1);
-	if (!format[0])
+	if (!format[i])
 		return (0);
 
 
@@ -43,7 +43,7 @@ int _printf(const char *format, ...)
 				}
 				else
 				{
-					ch += func(list, buf, pos), ch++;
+					ch += func(list, buf, pos);
 					i += ev_print_func(format, i + 1);
 				}
 			} i++;

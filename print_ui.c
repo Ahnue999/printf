@@ -15,11 +15,9 @@ int print_ui(va_list argument, char *buf, unsigned int pos)
 	unsigned int n, tmp, length = 0;
 	unsigned int count, d, m;
 
-	n = va_arg(argument, int);
-
-	m = n;
-
-	d = m;
+	n = va_arg(argument, unsigned int);
+	
+	d = n;
 	count = 1;
 	while (d > 9)
 	{
@@ -27,11 +25,10 @@ int print_ui(va_list argument, char *buf, unsigned int pos)
 		count *= 10;
 	}
 
-	for (; count > 0; count /= 10)
+	for (length = 0; count > 0; count /= 10, length++)
 	{
 		tmp = ((m / count) % 10);
 		input_buf(buf, ('0' + tmp), pos), pos++;
-		length++;
 	}
 
 	return (length);
