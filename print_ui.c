@@ -13,7 +13,7 @@
 int print_ui(va_list argument, char *buf, unsigned int pos)
 {
 	unsigned int n, tmp, length = 0;
-	unsigned int count, d, m;
+	unsigned int count, d;
 
 	n = va_arg(argument, unsigned int);
 	
@@ -27,7 +27,7 @@ int print_ui(va_list argument, char *buf, unsigned int pos)
 
 	for (length = 0; count > 0; count /= 10, length++)
 	{
-		tmp = ((m / count) % 10);
+		tmp = ((n / count) % 10);
 		input_buf(buf, ('0' + tmp), pos), pos++;
 	}
 
