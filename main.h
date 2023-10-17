@@ -31,8 +31,10 @@ int print_chr(va_list, char *, unsigned int);
 int print_str(va_list, char *, unsigned int);
 int print_dec(va_list, char *, unsigned int);
 int print_bin(va_list, char *, unsigned int);
+int print_oct(va_list, char *, unsigned int);
 int print_ui(va_list, char *, unsigned int);
 char *fill_bin(char *, int, int, int);
+char *fill_oct(char *oct, char *bin);
 int ev_print_func(const char *, int);
 
 #endif

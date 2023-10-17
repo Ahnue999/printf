@@ -1,18 +1,18 @@
 #include "main.h"
 
 /**
- * print_bin - concatenates a binary to the buffer.
+ * print_oct - concatenates an octal to the buffer.
  *
- * @argument: the integer to turn binary.
+ * @argument: the integer to turn octal.
  * @buf: the buffer.
  * @pos: the position to add on.
  *
- * Return: the length of the bin (8).
+ * Return: the length of the octal.
  */
-int print_bin(va_list argument, char *buf, unsigned int pos)
+int print_oct(va_list argument, char *buf, unsigned int pos)
 {
 	int n, i, length, first, is_neg = 0;
-	char *bin;
+	char *bin, *oct;
 
 	n = va_arg(argument, int);
 
@@ -30,19 +30,21 @@ int print_bin(va_list argument, char *buf, unsigned int pos)
 
 	bin = malloc(sizeof(char) * (32 + 1));
 	bin = fill_bin(bin, n, is_neg, 32);
+	oct = malloc(sizeof(char) * (11 + 1));
+	oct = fill_oct(oct, bin);
 
-	first = 0;
-	for (i = length = 0; bin[i]; i++)
+	for (first = i = 0; oct[i]; i++)
 	{
-		if (first == 0 && bin[i] == '1')
+		if (oct[i] != '0' && first == 0)
 			first = 1;
 		if (first == 1)
 		{
-			pos = input_buf(buf, bin[i], pos);
+			pos = input_buf(buf, oct[i], pos);
 			length++;
 		}
 
 	}
 	free(bin);
+	free(oct);
 	return (length);
 }

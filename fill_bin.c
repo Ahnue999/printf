@@ -17,7 +17,7 @@ char *fill_bin(char *bin, int n, int is_neg, int limit)
 		bin[i] = '0';
 	bin[limit] = '\0';
 
-	for (i = limit; n > 1; i--)
+	for (i = limit - 1; n > 1; i--)
 	{
 		if (n % 2 == 0)
 			bin[i] = '0';
