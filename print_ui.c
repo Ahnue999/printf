@@ -70,7 +70,7 @@ int print_sui(va_list argument, char *buf, unsigned int pos)
 
 /**
  * print_lui - concatenate an unsigned integer
- * to the buffer.
+ * to the buffer
  *
  * @argument: the unsigned integer.
  * @buf: the buffer.
