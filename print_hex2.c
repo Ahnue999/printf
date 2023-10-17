@@ -7,7 +7,7 @@
  * @buf: the buffer.
  * @pos: the position to add on.
  *
- * Return: the length of the octal.
+ * Return: the length of the octal
  */
 int print_NHEX(va_list argument, char *buf, unsigned int pos)
 {
